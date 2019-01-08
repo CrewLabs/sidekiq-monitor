@@ -1,5 +1,0 @@
-config_env :development do
-  set "REDIS_URL", "redis://localhost:6379/1"
-  set "USERNAME", "sidekiq"
-  set "PASSWORD", "sidekiq"
-end
