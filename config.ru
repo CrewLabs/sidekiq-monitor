@@ -2,6 +2,8 @@ require "syro"
 require "sidekiq"
 require "sidekiq/web"
 
+Sidekiq::Web.set :session_secret, ENV["SESSION_SECRET"]
+
 Workers = Syro.new do
   def sidekiq_web_for(url)
     Sidekiq.configure_client do |config|
@@ -51,6 +53,8 @@ Admin = Syro.new do
 end
 
 App = Rack::Builder.new do
+  use Rack::MethodOverride
+  use Rack::Session::Cookie, secret: ENV["SESSION_SECRET"]
   use Rack::Auth::Basic, "Protected Area" do |username, password|
     username == ENV["USERNAME"] && password == ENV["PASSWORD"]
   end
