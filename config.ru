@@ -1,6 +1,7 @@
 require "syro"
 require "sidekiq"
 require "sidekiq/web"
+require "sidekiq/grouping/web"
 
 Sidekiq::Web.set :session_secret, ENV["SESSION_SECRET"]
 
