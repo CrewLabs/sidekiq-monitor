@@ -1,0 +1,23 @@
+version: '3.4'
+
+services:
+  redis:
+    image: redis:3.2-alpine
+    volumes:
+      - redis-data:/data
+
+  web:
+    build: .
+    env_file: .env
+    command: rackup -p 3000
+
+    volumes:
+      - .:/app
+    ports:
+      - "3000:3000"
+    depends_on:
+      - redis
+
+volumes:
+  redis-data:
+
