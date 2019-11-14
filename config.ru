@@ -1,6 +1,10 @@
+require "active_support"
+require "active_support/all"
 require "syro"
 require "sidekiq"
 require "sidekiq/web"
+require "sidekiq/grouping/batch"
+require "sidekiq/grouping/redis"
 require "sidekiq/grouping/web"
 
 Sidekiq::Web.set :session_secret, ENV["SESSION_SECRET"]
