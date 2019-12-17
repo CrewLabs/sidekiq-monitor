@@ -6,6 +6,7 @@ require "sidekiq/web"
 require "sidekiq/grouping/batch"
 require "sidekiq/grouping/redis"
 require "sidekiq/grouping/web"
+require "sidekiq/cron/web"
 
 Sidekiq::Web.set :session_secret, ENV["SESSION_SECRET"]
 
